@@ -20,10 +20,14 @@ class Api {
 
     static async fetchItems()  {
 
-        return await API.get(apiName, "/")
-            .catch(error => {
-                console.log(error.response);
-            });
+        // return await API.get(apiName, "/")
+        //     .catch(error => {
+        //         console.log(error.response);
+        //     });
+
+        return new Promise((resolve) => {
+            resolve([]);
+        });
     }
 
     static async fetchItemsProfile(profileID) {
