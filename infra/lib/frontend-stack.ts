@@ -16,14 +16,15 @@ export class Frontend extends cdk.Stack {
     super(scope, id, props);
 
     const websiteBucket = new s3.Bucket(this, "WebSiteBuck", {
-      accessControl: s3.BucketAccessControl.PRIVATE,
-      encryption: s3.BucketEncryption.S3_MANAGED,
-      versioned: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
     });
 
     const distribution = new cloudfront.Distribution(this, 'WebSiteDistribution',{
         defaultBehavior: { origin: new origins.S3Origin(websiteBucket) },
+        defaultRootObject: 'index.html',
+        errorResponses: [
+          { httpStatus: 404, responsePagePath: '/index.html', responseHttpStatus: 200 },
+        ],
     });
 
     new s3deploy.BucketDeployment(this, 'DeployWebsite', {
