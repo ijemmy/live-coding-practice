@@ -22,14 +22,19 @@ export class BackendStack extends cdk.Stack {
       }
     );
 
-    const api = new apigateway.RestApi(this, "feedback-api", {});
+    const api = new apigateway.RestApi(this, "feedback-api", {
+      // defaultCorsPreflightOptions: {
+      //   allowOrigins: apigateway.Cors.ALL_ORIGINS,
+      //   allowMethods: apigateway.Cors.ALL_METHODS,
+      // }, 
+    });
     this.api = api;
     
     const integration = new apigateway.LambdaIntegration(
       lambdaToDynamoDB.lambdaFunction
     );
 
-    const feedbacks = api.root.addResource("feedbacks");
+    const feedbacks = api.root.addResource("feedback");
     feedbacks.addMethod("POST", integration);
 
     new cdk.CfnOutput(this, "FrontendConfig", {
