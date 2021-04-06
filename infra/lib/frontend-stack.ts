@@ -28,7 +28,7 @@ export class Frontend extends cdk.Stack {
     });
 
     new s3deploy.BucketDeployment(this, 'DeployWebsite', {
-        sources: [s3deploy.Source.asset(path.resolve(__dirname, '../../webapp/build'))],
+        sources: [s3deploy.Source.asset(path.resolve(__dirname, '../../ui/build'))],
         destinationBucket: websiteBucket,
         distribution: distribution
       });
