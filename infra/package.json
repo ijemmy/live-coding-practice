@@ -14,9 +14,10 @@
     "@aws-cdk/assert": "1.94.1",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
+    "aws-cdk": "1.94.1",
+    "aws-sdk": "2.880.0",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
-    "aws-cdk": "1.94.1",
     "ts-node": "^9.0.0",
     "typescript": "~3.9.7"
   },
@@ -24,10 +25,12 @@
     "@aws-cdk/aws-apigateway": "1.94.1",
     "@aws-cdk/aws-cloudfront": "1.94.1",
     "@aws-cdk/aws-cloudfront-origins": "1.94.1",
+    "@aws-cdk/aws-dynamodb": "1.94.1",
     "@aws-cdk/aws-s3": "1.94.1",
     "@aws-cdk/aws-s3-deployment": "1.94.1",
     "@aws-cdk/core": "1.94.1",
     "@aws-solutions-constructs/aws-apigateway-dynamodb": "1.94.1",
+    "@aws-solutions-constructs/aws-lambda-dynamodb": "1.94.1",
     "source-map-support": "^0.5.16"
   }
 }
