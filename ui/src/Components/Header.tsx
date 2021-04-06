@@ -19,7 +19,7 @@ export default function Header() {
     <MuiAppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          Activate Academy Landing Page
+        The PostNL Symposium CDK Landing Page
         </Typography>
       </Toolbar>
     </MuiAppBar>
