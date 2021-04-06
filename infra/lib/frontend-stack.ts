@@ -12,12 +12,15 @@ export interface FrontendProps extends cdk.StackProps {
 }
 
 export class Frontend extends cdk.Stack {
+  public readonly siteBucket: s3.Bucket;
+
   constructor(scope: cdk.Construct, id: string, props: FrontendProps) {
     super(scope, id, props);
 
     const websiteBucket = new s3.Bucket(this, "WebSiteBuck", {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
     });
+    this.siteBucket = websiteBucket;
 
     const distribution = new cloudfront.Distribution(this, 'WebSiteDistribution',{
         defaultBehavior: { origin: new origins.S3Origin(websiteBucket) },

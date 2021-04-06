@@ -1,19 +1,12 @@
 import * as AWS from "aws-sdk";
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  process.env.Access_Control_Allow_Origin,
-];
 const TABLE_NAME = process.env.DDB_TABLE_NAME!;
 const dynamodb = new AWS.DynamoDB();
 
 exports.handler = async (event: any) => {
   const headers = {
-    "Access-Control-Allow-Origin": undefined,
+    "Access-Control-Allow-Origin": "*",
   };
-  if (allowedOrigins.includes(event["headers"]["origin"])) {
-    headers["Access-Control-Allow-Origin"] = event["headers"]["origin"];
-  }
   const body = event["body"];
   const { name, email, subject, details } = JSON.parse(body);
   const key = `${email.toLowerCase()}:${new Date().toISOString()}`;

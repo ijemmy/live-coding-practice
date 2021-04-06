@@ -5,6 +5,8 @@ import * as apigateway from "@aws-cdk/aws-apigateway";
 
 export interface BackendStackProps extends cdk.StackProps {}
 export class BackendStack extends cdk.Stack {
+  public readonly api: apigateway.RestApi;
+
   constructor(scope: cdk.Construct, id: string, props: BackendStackProps) {
     super(scope, id, props);
 
@@ -21,6 +23,8 @@ export class BackendStack extends cdk.Stack {
     );
 
     const api = new apigateway.RestApi(this, "feedback-api", {});
+    this.api = api;
+    
     const integration = new apigateway.LambdaIntegration(
       lambdaToDynamoDB.lambdaFunction
     );
